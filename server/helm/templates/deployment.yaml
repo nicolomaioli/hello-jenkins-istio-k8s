@@ -25,4 +25,4 @@ spec:
             - name: PORT
               value: {{ quote .Values.container.port }}
             - name: COLOR
-              value: {{ .Values.container.color }}
+              value: {{ quote .Values.container.color }}
