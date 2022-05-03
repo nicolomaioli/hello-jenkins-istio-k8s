@@ -6,7 +6,7 @@ container:
   color: green
 
 image:
-  repository: green-machine
+  repository: server
   tag: latest
   imagePullPolicy: Never
 
