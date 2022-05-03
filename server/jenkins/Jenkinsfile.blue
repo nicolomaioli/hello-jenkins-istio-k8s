@@ -17,13 +17,13 @@ podTemplate(
 
 		stage('Build') {
 			container('docker') {
-				sh 'docker build -t server .'
+				sh 'docker build -t server ./server'
 			}
 		}
 
 		stage('Deploy') {
 			container('helm') {
-				sh 'helm upgrade --install blue-machine ./helm --set container.color=blue --namespace default'
+				sh 'helm upgrade --install blue-machine ./server/helm --set container.color=blue --namespace default'
 			}
 		}
 	}
