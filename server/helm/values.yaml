@@ -1,0 +1,14 @@
+namespace: default
+replicaCount: 1
+
+container:
+  port: 8080
+  color: green
+
+image:
+  repository: green-machine
+  tag: latest
+  imagePullPolicy: Never
+
+service:
+  port: 80

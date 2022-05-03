@@ -1,0 +1,30 @@
+podTemplate(
+	containers: [
+		containerTemplate(name: 'docker', image: 'docker:20.10.14', command: 'sleep', args: '99d'),
+		containerTemplate(name: 'helm', image: 'alpine/helm:3.7.1', command: 'sleep', args: '99d'),
+	],
+	volumes: [
+		hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
+	]
+)
+
+{
+	node(POD_LABEL) {
+		stage('Clone') {
+			git url: 'https://github.com/nicolomaioli/green-machine.git', branch: 'main'
+		}
+
+		stage('Build') {
+			container('docker') {
+				sh 'docker build -t green-machine .'
+			}
+		}
+
+		stage('Deploy') {
+			container('helm') {
+				sh 'helm upgrade --install green-machine ./helm --namespace default'
+				sh 'helm upgrade --install blue-machine ./helm --set container.color=blue --namespace default'
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.container.color }}-machine"
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: "{{ .Values.container.color }}-machine"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: "{{ .Values.container.color }}-machine"
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.container.color }}-machine"
+    spec:
+      containers:
+        - name: "{{ .Values.container.color }}-machine"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.imagePullPolicy }}
+          ports:
+            - containerPort: {{ .Values.container.port }}
+          env:
+            - name: PORT
+              value: {{ quote .Values.container.port }}
+            - name: COLOR
+              value: {{ .Values.container.color }}
