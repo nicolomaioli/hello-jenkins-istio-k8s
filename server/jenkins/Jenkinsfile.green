@@ -16,7 +16,7 @@ podTemplate(
 
 		stage('Build') {
 			container('docker') {
-				sh 'docker build -t server ./server/Dockerfile'
+				sh 'docker build -t server ./server'
 			}
 		}
 
