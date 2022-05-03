@@ -11,18 +11,18 @@ podTemplate(
 {
 	node(POD_LABEL) {
 		stage('Clone') {
-			git url: 'https://github.com/nicolomaioli/green-machine.git', branch: 'main'
+			git url: 'https://github.com/nicolomaioli/hello-jenkins-istio-k8s', branch: 'main'
+			sh 'cd server'
 		}
 
 		stage('Build') {
 			container('docker') {
-				sh 'docker build -t green-machine .'
+				sh 'docker build -t server .'
 			}
 		}
 
 		stage('Deploy') {
 			container('helm') {
-				sh 'helm upgrade --install green-machine ./helm --namespace default'
 				sh 'helm upgrade --install blue-machine ./helm --set container.color=blue --namespace default'
 			}
 		}
