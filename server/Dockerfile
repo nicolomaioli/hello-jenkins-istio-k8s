@@ -11,4 +11,4 @@ RUN npm ci --only=production
 COPY src/ ./src
 
 EXPOSE $PORT
-CMD ["npm", "start"]
+CMD ["node", "src/index.js"]
