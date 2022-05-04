@@ -12,7 +12,6 @@ podTemplate(
 	node(POD_LABEL) {
 		stage('Clone') {
 			git url: 'https://github.com/nicolomaioli/hello-jenkins-istio-k8s', branch: 'main'
-			sh 'cd server'
 		}
 
 		stage('Build') {
