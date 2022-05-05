@@ -5,6 +5,20 @@ Istio, so I decided to throw together a little project to play around with
 things. Each directory contains dedicated and detailed readmes you can dig
 into.
 
+## Install
+
+Start by creating a Minikube cluster that is large enough to accommodate all of
+the components (both Istio and Jenkins are resource hungry):
+
+```sh
+minikube start --memory 8192 --cpus 6
+```
+
+Follow the readme in the `istio/` folder to set up Istio.
+Follow the readme in the `jenkins/` folder to set up Jenkins.
+Create Jobs for `green-machine` and `blue-machine`.
+Run the pipelines.
+
 ## Key takeaways
 
 - Both Jenkins and Istio are resource hungry, if you don't allocate enough
