@@ -3,10 +3,3 @@ agent:
     - type: HostPath
       hostPath: /var/run/docker.sock
       mountPath: /var/run/docker.sock
-
-rbac:
-  create: true
-
-  # This should allow Jenkins to read secrets in the namespace it has been
-  # deployed to, but it doesn't seem to work.
-  readSecrets: true
