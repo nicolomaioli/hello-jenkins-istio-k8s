@@ -22,7 +22,7 @@ podTemplate(
 
 		stage('Deploy') {
 			container('helm') {
-				sh 'helm upgrade --install green-machine ./server/helm --set container.color=green --namespace default'
+				sh 'helm upgrade --install green-machine ./server/helm --set container.color=green --namespace dev'
 			}
 		}
 	}

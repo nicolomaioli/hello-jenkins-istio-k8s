@@ -1,4 +1,4 @@
-namespace: default
+namespace: dev
 replicaCount: 1
 
 container:

@@ -1,4 +1,4 @@
-# This allows Jenkins to deploy to the 'default' namespace using helm
+# This allows Jenkins to deploy to the 'dev' namespace using helm
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -29,10 +29,10 @@ subjects:
   namespace: jenkins
 - kind: ServiceAccount
   name: default
-  namespace: default
+  namespace: dev
 - kind: ServiceAccount
   name: jenkins
-  namespace: default
+  namespace: dev
 roleRef:
  kind: ClusterRole
  name: jenkins-role
