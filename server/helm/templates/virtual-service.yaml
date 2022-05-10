@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   hosts:
-  - {{ .Values.container.color }}
+  - "{{ .Values.container.color }}-machine.{{ .Values.namespace }}.svc.cluster.local"
   http:
   - route:
     - destination:
@@ -30,6 +30,6 @@ spec:
       uri: /
     route:
     - destination:
-        host: {{ .Values.container.color }}
+        host: "{{ .Values.container.color }}-machine.{{ .Values.namespace }}.svc.cluster.local"
         port:
           number: {{ .Values.service.port }}
