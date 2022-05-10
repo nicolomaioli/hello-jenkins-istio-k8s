@@ -1,0 +1,35 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: "{{ .Values.container.color }}-machine-route"
+  namespace: {{ .Values.namespace }}
+spec:
+  hosts:
+  - {{ .Values.container.color }}
+  http:
+  - route:
+    - destination:
+        host: {{ .Values.container.color }}
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: "{{ .Values.container.color }}-machine-gw-route"
+  namespace: {{ .Values.namespace }}
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - application-gateway
+  http:
+  - match:
+    - uri:
+        prefix: "/{{ .Values.container.color }}"
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        host: {{ .Values.container.color }}
+        port:
+          number: {{ .Values.service.port }}
