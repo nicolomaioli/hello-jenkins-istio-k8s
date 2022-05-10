@@ -14,10 +14,12 @@ the components (both Istio and Jenkins are resource hungry):
 minikube start --memory 8192 --cpus 6
 ```
 
-Follow the readme in the `istio/` folder to set up Istio.
-Follow the readme in the `jenkins/` folder to set up Jenkins.
-Create Jobs for `green-machine` and `blue-machine`.
-Run the pipelines.
+- Follow the readme in the `istio/` folder to set up Istio.
+- Follow the readme in the `jenkins/` folder to set up Jenkins.
+- Create Jobs for `green-machine` and `blue-machine`.
+- Run the pipelines.
+- Run `minikube tunnel` to expose Istio Ingress Gateway, then curl or visit
+  `localhost/green` and `localhost/blue`.
 
 ## Key takeaways
 
