@@ -11,7 +11,7 @@ podTemplate(
 {
 	node(POD_LABEL) {
 		stage('Clone') {
-			git url: 'https://github.com/nicolomaioli/hello-jenkins-istio-k8s', branch: 'feature/add-istio-routing'
+			git url: 'https://github.com/nicolomaioli/hello-jenkins-istio-k8s', branch: 'main'
 		}
 
 		stage('Build') {
